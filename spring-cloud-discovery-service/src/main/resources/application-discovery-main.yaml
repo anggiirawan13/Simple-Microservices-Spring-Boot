@@ -1,0 +1,10 @@
+# RUN DISCOVERY
+# SPRING_PROFILES_ACTIVE=discovery-main mvn clean spring-boot:run
+
+server:
+  port: 2023
+
+eureka:
+  client:
+    service-url:
+      defaultZone: http://localhost:2022/eureka/
