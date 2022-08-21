@@ -1,0 +1,7 @@
+server:
+  port: 9000
+spring:
+  application:
+    name: cif-service
+  profiles:
+    active: development

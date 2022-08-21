@@ -1,0 +1,65 @@
+spring:
+  datasource:
+    url: jdbc:mysql://localhost:3306/cif_service_db?createDatabaseIfNotExist=true&allowPublicKeyRetrieval=true&useUnicode=true&useJDBCCompliantTimezoneShift=true&useLegacyDatetimeCode=false&serverTimezone=Asia/Jakarta&useSSL=false
+    username: root
+    password: 130302
+    driver-class-name: com.mysql.cj.jdbc.Driver
+    database-platform: org.hibernate.dialect.MySQL8Dialect
+
+    type: com.zaxxer.hikari.HikariDataSource
+    hikari:
+      maximumPoolSize: 15
+      autoCommit: true
+      poolName: hikariPerpus
+      maxLifeTime: 1800000
+      connectionTimeout: 30000
+      minimumIdle: 10
+      idleTimeout: 100
+    timeBetweenEvictionRunsMillis: 18800
+
+  jpa:
+    show-sql: true
+    hibernate:
+      ddl-auto: update
+    properties:
+      hibernate:
+        show_sql: true
+    database: mysql
+
+  redis:
+    host: localhost
+    port: 6379
+    timeout: 10000ms
+    lettuce:
+      pool:
+        max-active: 8
+        max-wait: -1ms
+        max-idle: 8
+        min-idle: 8
+    cache:
+      type: redis
+      cache-name: cif
+      redis:
+        time-to-live: 60000
+        cache-null-values: false
+
+eureka:
+  client:
+    service-url:
+      defaultZone: http://localhost:2023/eureka/
+
+clear:
+  all:
+    cache:
+      fixed:
+        rate:
+
+management:
+  endpoints:
+    web:
+      exposure:
+        exclude: "*"
+
+  endpoint:
+    shutdown:
+      enabled: true

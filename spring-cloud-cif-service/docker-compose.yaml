@@ -1,0 +1,20 @@
+version: '3'
+
+services:
+  mysql-server:
+    image: mysql:latest
+    restart: always
+    container_name: awan_mysql
+    environment:
+      MYSQL_ROOT_PASSWORD: 130302
+    volumes:
+      - mysql-data:/var/lib/mysql
+    ports:
+      - "3308:3306"
+    networks:
+      - cif_networks
+volumes:
+  mysql-data:
+networks:
+  cif_networks:
+    driver: bridge
