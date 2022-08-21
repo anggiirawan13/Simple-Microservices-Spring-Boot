@@ -1,4 +1,4 @@
-package com.anggi.irawan.springcloudcifservice.components;
+package com.anggi.irawan.springcloudmanagementservice.components;
 
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.boot.autoconfigure.AutoConfigureAfter;
