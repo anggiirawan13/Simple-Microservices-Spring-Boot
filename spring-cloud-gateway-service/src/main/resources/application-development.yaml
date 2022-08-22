@@ -1,0 +1,38 @@
+spring:
+  jackson:
+    serialization:
+      indent-output: true
+  cloud:
+    gateway:
+      routes:
+        # ROUTES CIF SERVICE
+        - id: cif-service
+          uri: lb://cif-service
+          predicates:
+            - Path=/cif/**,
+          filters:
+            - RewritePath=/cif/(?<segment>.*), /$\{segment}
+        # ROUTES PARAMETER SERVICE
+        - id: parameter-service
+          uri: lb://parameter-service
+          predicates:
+            - Path=/parameter/**,
+          filters:
+            - RewritePath=/parameter/(?<segment>.*), /$\{segment}
+        # ROUTES PARAMETER SERVICE
+        - id: management-service
+          uri: lb://management-service
+          predicates:
+            - Path=/management/**,
+          filters:
+            - RewritePath=/management/(?<segment>.*), /$\{segment}
+management:
+  endpoints:
+    web:
+      exposure:
+        include: '*'
+
+eureka:
+  client:
+    service-url:
+      defaultZone: http://localhost:2023/eureka/
