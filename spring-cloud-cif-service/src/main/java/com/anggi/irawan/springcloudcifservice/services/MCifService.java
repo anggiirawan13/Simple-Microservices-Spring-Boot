@@ -13,5 +13,5 @@ public interface MCifService {
 
     DefaultResponse findByIdCif(String id);
 
-    void deleteCif(String id);
+    DefaultResponse deleteCif(String id);
 }

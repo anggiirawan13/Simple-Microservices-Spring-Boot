@@ -13,5 +13,5 @@ public interface MCifWorkService {
 
     DefaultResponse findByIdMCifWork(String id);
 
-    void deleteMCifWork(String id);
+    DefaultResponse deleteMCifWork(String id);
 }

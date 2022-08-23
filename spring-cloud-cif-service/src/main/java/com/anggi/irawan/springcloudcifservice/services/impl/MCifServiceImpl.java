@@ -90,13 +90,15 @@ public class MCifServiceImpl implements MCifService {
     @Caching(evict = {@CacheEvict(cacheNames = "cif", key = "#id"), @CacheEvict(cacheNames = "cifs", allEntries = true)})
     @Transactional
     @Override
-    public void deleteCif(String id) {
+    public DefaultResponse deleteCif(String id) {
         Optional<MCifModel> deleteResponse = cifRepository.findById(id);
         if (NullEmptyChecker.isNullOrEmpty(deleteResponse)) {
             throw new BussinesException("DATA NOT FOUNDS");
         }
 
         cifRepository.deleteById(id);
+
+        return new DefaultResponse(true, "Delete cif data success", null, null);
     }
 
     @SneakyThrows

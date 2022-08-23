@@ -13,5 +13,5 @@ public interface MCifFamilyService {
 
     DefaultResponse findByIdMCifFamily(String id);
 
-    void deleteMCifFamily(String id);
+    DefaultResponse deleteMCifFamily(String id);
 }

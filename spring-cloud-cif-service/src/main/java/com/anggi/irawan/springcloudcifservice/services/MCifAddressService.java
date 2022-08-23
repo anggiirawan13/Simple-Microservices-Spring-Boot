@@ -13,5 +13,5 @@ public interface MCifAddressService {
 
     DefaultResponse findByIdMCifAddress(String id);
 
-    void deleteMCifAddress(String id);
+    DefaultResponse deleteMCifAddress(String id);
 }

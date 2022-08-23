@@ -107,7 +107,7 @@ public class MCifAddressServiceImpl implements MCifAddressService {
     @Caching(evict = {@CacheEvict (cacheNames = "cifAddresss", key = "#id"), @CacheEvict(cacheNames = "cifAddress", allEntries = true)})
     @Transactional
     @Override
-    public void deleteMCifAddress(String id) {
+    public DefaultResponse deleteMCifAddress(String id) {
         Optional<MCifAddressModel> findMCifAddressById = addressRepository.findById(id);
 
         if(findMCifAddressById.isEmpty()){
@@ -115,6 +115,8 @@ public class MCifAddressServiceImpl implements MCifAddressService {
         }
 
         addressRepository.deleteById(id);
+
+        return new DefaultResponse(true, "Delete cif data success", null, null);
     }
 
     @SneakyThrows

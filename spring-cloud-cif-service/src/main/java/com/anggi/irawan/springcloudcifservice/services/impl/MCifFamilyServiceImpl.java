@@ -130,13 +130,15 @@ public class MCifFamilyServiceImpl implements MCifFamilyService {
     @Caching(evict = {@CacheEvict (cacheNames = "cifFamilys", key = "#id"), @CacheEvict(cacheNames = "cifFamily", allEntries = true)})
     @Transactional
     @Override
-    public void deleteMCifFamily(String id) {
+    public DefaultResponse deleteMCifFamily(String id) {
         Optional<MCifFamilyModel> findFamily = familyRepository.findById(id);
         if(findFamily.isEmpty()){
             throw new Exception("ID NOT FOUNDS");
         }
 
         familyRepository.deleteById(id);
+
+        return new DefaultResponse(true, "Delete cif data success", null, null);
     }
 
     @SneakyThrows

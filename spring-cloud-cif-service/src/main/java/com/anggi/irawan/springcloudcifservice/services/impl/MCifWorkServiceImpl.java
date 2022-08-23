@@ -124,13 +124,16 @@ public class MCifWorkServiceImpl implements MCifWorkService {
     @SneakyThrows
     @Caching(evict = { @CacheEvict (cacheNames = "cifWorks", key = "#id"), @CacheEvict(cacheNames = "cifWork", allEntries = true) })
     @Transactional
-    public void deleteMCifWork(String id) {
+    @Override
+    public DefaultResponse deleteMCifWork(String id) {
         Optional<MCifWorkModel> findWorks = mCifWorkRepository.findById(id);
         if(findWorks.isEmpty()){
             throw new Exception("ID NOT FOUND");
         }
 
         mCifWorkRepository.deleteById(id);
+
+        return new DefaultResponse(true, "Delete cif data success", null, null);
     }
 
     @SneakyThrows
