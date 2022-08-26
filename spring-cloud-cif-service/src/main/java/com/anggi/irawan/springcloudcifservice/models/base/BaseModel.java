@@ -24,11 +24,11 @@ public class BaseModel {
     @Column(nullable = false, columnDefinition = "DATE")
     private LocalDate createdAt;
 
-    @Column(nullable = false, length = 30)
+    @Column(length = 30)
     private String updatedBy;
 
     @UpdateTimestamp
-    @Column(nullable = false, columnDefinition = "DATE")
+    @Column(columnDefinition = "DATE")
     private LocalDate updatedAt;
 
     @Column(nullable = false, length = 30)
